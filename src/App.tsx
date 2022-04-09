@@ -3,6 +3,7 @@ import './App.css';
 import {TaskType, Todolist} from './Todolist';
 import {v1} from 'uuid';
 import {AddItemForm} from "./components/AddItemForm";
+import {Modal} from "./components/Modal";
 
 export type FilterValuesType = "all" | "active" | "completed";
 type TodolistType = {
@@ -88,6 +89,20 @@ function App() {
     return (
         <div className="App">
 
+            {/*<Modal title={'New data'}>*/}
+            {/*    <div>dddddddddd</div>*/}
+            {/*    <h3>H3</h3>*/}
+            {/*    <input type="text"/>*/}
+            {/*    <button>X</button>*/}
+            {/*</Modal>*/}
+
+            {/*<Modal title={'Data22222'}>*/}
+            {/*    <h3>H3</h3>*/}
+            {/*    <input type="checkbox"/>*/}
+            {/*</Modal>*/}
+
+
+
             <AddItemForm callBack={addTodolist}/>
 
             {
@@ -118,6 +133,7 @@ function App() {
                     />
                 })
             }
+
 
         </div>
     )
