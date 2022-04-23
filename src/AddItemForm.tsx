@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
 type AddItemFormPropsType = {
-    callback: (title: string) => void
+    addItem: (title: string) => void
 }
 
 export function AddItemForm(props: AddItemFormPropsType) {
@@ -9,9 +9,9 @@ export function AddItemForm(props: AddItemFormPropsType) {
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
 
-    const callback = () => {
+    const addItem = () => {
         if (title.trim() !== "") {
-            props.callback(title);
+            props.addItem(title);
             setTitle("");
         } else {
             setError("Title is required");
@@ -25,7 +25,7 @@ export function AddItemForm(props: AddItemFormPropsType) {
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null);
         if (e.charCode === 13) {
-            callback();
+            addItem();
         }
     }
 
@@ -35,7 +35,7 @@ export function AddItemForm(props: AddItemFormPropsType) {
                onKeyPress={onKeyPressHandler}
                className={error ? "error" : ""}
         />
-        <button onClick={callback}>+</button>
+        <button onClick={addItem}>+</button>
 
         {error && <div className="error-message">{error}</div>}
     </div>

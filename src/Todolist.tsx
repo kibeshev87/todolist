@@ -43,7 +43,7 @@ export function Todolist(props: PropsType) {
         <h3> <EditableSpan value={props.title} onChange={changeTodolistTitle} />
             <button onClick={removeTodolist}>x</button>
         </h3>
-        <AddItemForm callback={addTask}/>
+        <AddItemForm addItem={addTask}/>
         <ul>
             {
                 props.tasks.map(t => {
