@@ -52,9 +52,6 @@ export function Todolist(props: PropsType) {
             {
                 props.tasks.map(t => {
                     const onClickHandler = () => props.removeTask(t.id, props.id)
-                    // const onChangeHandler = (checkedValue: boolean) => {
-                    //     props.changeTaskStatus(t.id, checkedValue, props.id);
-                    // }
                     const onTitleChangeHandler = (newValue: string) => {
                         props.changeTaskTitle(t.id, newValue, props.id);
                     }
