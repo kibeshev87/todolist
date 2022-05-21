@@ -45,10 +45,12 @@ function AppWithRedux() {
     }, [dispatch])
 
     const changeFilter = useCallback((value: FilterValuesType, todolistId: string)=> {
+        debugger
         dispatch(ChangeTodolistFilterAC(todolistId, value))
     },[dispatch])
 
     const changeStatus = useCallback((id: string, isDone: boolean, todolistId: string) => {
+
         dispatch(changeTaskStatusAC(id, isDone, todolistId))
     },[dispatch])
 

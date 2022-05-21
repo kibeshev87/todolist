@@ -20,11 +20,9 @@ export const Task = React.memo(({
     console.log('Task')
 
     const onClickHandler = () => removeTask(task.id)
-
     const onChangeHandler = (checkedValue: boolean, taskId: string) => {
         changeTaskStatus(task.id, checkedValue)
     }
-
     const onTitleChangeHandler = useCallback((newValue: string) => {
         changeTaskTitle(task.id, newValue);
     }, [changeTaskTitle, task.id])
