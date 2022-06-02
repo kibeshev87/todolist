@@ -17,5 +17,5 @@ test('ids should be equals', () => {
 
     expect(idFromTasks).toBe(action.todolistId);
     expect(idFromTodolists).toBe(action.todolistId);
-    expect(idFromTasks).toBe(idFromTodolists)
+    expect(idFromTasks).toBe(idFromTodolists);
 });
