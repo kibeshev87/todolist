@@ -101,33 +101,3 @@ export const changeTaskTitleAC = (taskId: string, title: string, todolistId: str
     } as const
 }
 
-
-
-
-//export const removeTaskAC = (taskId: string, todolistId: string): RemoveTasksActionType =>  ({type: 'REMOVE-TASK', taskId, todolistId}) as const
-//export type RemoveTasksActionType = ReturnType<typeof removeTaskAC>
-//
-// case "CHANGE-TASK-STATUS": {
-//     return {
-//         ...state, [action.todolistId]: state[action.todolistId]
-//             .map(el => el.id === action.taskId ? {...el, isDone: action.isDone} : el)
-//     }
-// }
-// case "CHANGE-TASK-TITLE": {
-//     return {
-//         ...state, [action.todolistId]: state[action.todolistId]
-//             .map(el => el.id === action.taskId ? {...el, title: action.title} : el)
-//     }
-// }
-// case "ADD-TODOLIST": {
-//     return {
-//         ...state, [action.todolistId]: []
-//     }
-// }
-// case "REMOVE-TODOLIST": {
-//     let copyState = {...state}
-//     delete copyState[action.id]
-//     return copyState
-//     /*let {[action.id]: [], ...rest} = {...state}
-//     return rest*/
-// }
