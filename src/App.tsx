@@ -49,12 +49,12 @@ function App() {
         }, [])
 
 
-    const removeTask = useCallback(function (id: string, todolistId: string) {
-        dispatch(deleteTaskTC(todolistId, id))
+    const removeTask = useCallback(function (taskId: string, todoId: string) {
+        dispatch(deleteTaskTC({todoId, taskId} ))
     }, []);
 
     const addTask = useCallback(function (title: string, todolistId: string) {
-        dispatch(addTaskTC(todolistId, title));
+        dispatch(addTaskTC({ todolistId, title } ));
     }, []);
 
     const changeStatus = useCallback(function (id: string, status: TaskStatuses, todolistId: string) {

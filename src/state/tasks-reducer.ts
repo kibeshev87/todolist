@@ -79,7 +79,7 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
 
         case 'REMOVE-TASK': {
 
-            //return {...state, [action.todolistId]: [action.todolistId].filter(t => t.id !== action.taskId) }
+            //return {...state, [action.todolistId]: {...state, [...action.todolistId].filter(t => t.id !== action.taskId) }} // .filter(t => t.id !== action.taskId) }
             const stateCopy = {...state}
             const tasks = stateCopy[action.todolistId];
             const newTasks = tasks.filter(t => t.id !== action.taskId);
@@ -168,14 +168,14 @@ export const fetchTasksTC = (todoId: string) => (dispatch: Dispatch) => {
             dispatch(fetchTaskAC(todoId, res.data.items))
         })
 }
-export const deleteTaskTC = (todoId: string, taskId: string) => (dispatch: Dispatch) => {
-    todolistsAPI.deleteTask(todoId, taskId)
+export const deleteTaskTC = (p: { todoId: string, taskId: string }) => (dispatch: Dispatch) => {
+    todolistsAPI.deleteTask(p)
         .then((res) => {
-            dispatch(removeTaskAC(taskId, todoId))
+            dispatch(removeTaskAC(p.taskId, p.todoId))
         })
 }
-export const addTaskTC = (todolistId: string, title: string) => (dispatch: Dispatch) => {
-    todolistsAPI.createTask(todolistId, title)
+export const addTaskTC = (payload: { todolistId: string, title: string }) => (dispatch: Dispatch) => {
+    todolistsAPI.createTask(payload)
         .then((res) => {
             const newTask = res.data.data.item
             dispatch(addTaskAC(newTask))
