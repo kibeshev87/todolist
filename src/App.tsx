@@ -1,20 +1,10 @@
 import React, {useCallback, useEffect} from 'react';
 import './App.css';
 import {AddItemForm} from './AddItemForm';
-import {
-    addTodolistAC, addTodolistTC,
-    fetchTodolistsTC,
-} from "./store/TodolistsReducer";
+import {addTodolistTC, fetchTodolistsTC,} from "./store/TodolistsReducer";
 import {TaskType} from "./todolists-api";
 import {Todolist} from "./Todolist";
 import {useAppDispatch, useAppSelector} from "./store/hooks";
-
-/*export type FilterValuesType = "all" | "active" | "completed";
-export type TodolistType = {
-    todolistId: string
-    title: string
-    filter: FilterValuesType
-}*/
 
 export type TasksStateType = {
     [key: string]: Array<TaskType>
@@ -22,7 +12,9 @@ export type TasksStateType = {
 
 
 function App() {
+
     const todolists = useAppSelector(state => state.todolists)
+    let tasks = useAppSelector(state => state.tasks)
 
     const dispatch = useAppDispatch()
 
@@ -39,17 +31,17 @@ function App() {
             <AddItemForm addItem={addTodolist}/>
             {
                 todolists.map(tl => {
-
+                    let allTodolistTask = tasks[tl.id]
                     return <Todolist
                         key={tl.id}
                         todolist={tl}
                         filter={tl.filter}
+                        tasks={allTodolistTask}
                     />
                 })
             }
-
         </div>
-    );
+    )
 }
 
-export default App;
+export default App
